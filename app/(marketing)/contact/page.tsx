@@ -1,0 +1,3 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+export default function ContactPage() { return <main className="mx-auto max-w-3xl px-4 py-20"><h1 className="text-5xl font-semibold tracking-tight">Talk to sales</h1><p className="mt-4 text-muted-foreground">For payment volume, custom domains, or orchestration consulting.</p><form className="mt-8 grid gap-4 rounded-2xl border p-6"><Input placeholder="Work email" type="email" /><Input placeholder="Company" /><textarea className="min-h-32 rounded-xl border bg-background p-3 text-sm" placeholder="What are you building?" /><Button>Request demo</Button></form></main>; }
