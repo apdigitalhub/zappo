@@ -1,0 +1,4 @@
+import { getPaymentProvider } from "@/lib/payments/provider-factory";
+import type { PaymentGateway, UnifiedPaymentRequest, UnifiedPaymentResponse } from "@/types/payments";
+const currencyPreference: Record<string, PaymentGateway[]> = { NGN: ["FLUTTERWAVE", "KORA", "PAYPAL"], GHS: ["FLUTTERWAVE", "PAYPAL", "KORA"], USD: ["PAYPAL", "FLUTTERWAVE", "KORA"] };
+export async function initializeWithSmartRouting(input: UnifiedPaymentRequest, enabled: PaymentGateway[] = ["FLUTTERWAVE", "KORA", "PAYPAL"]): Promise<UnifiedPaymentResponse> { const route = (currencyPreference[input.currency] ?? enabled).filter((gateway) => enabled.includes(gateway)); let lastError: unknown; for (const gateway of route) { try { return await getPaymentProvider(gateway).initializePayment(input); } catch (error) { lastError = error; } } throw new Error(`All payment gateways failed: ${String(lastError)}`); }

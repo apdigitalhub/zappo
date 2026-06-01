@@ -1,0 +1,3 @@
+import { Card, CardContent } from "@/components/ui/card";
+const snippets = ["POST /api/checkout-pages", "POST /api/payments/initialize", "POST /api/webhooks/flutterwave"];
+export default function DocsPage() { return <main className="mx-auto max-w-5xl px-4 py-20"><h1 className="text-5xl font-semibold tracking-tight">Developer documentation</h1><p className="mt-4 max-w-2xl text-muted-foreground">Typed APIs, idempotent payment creation, signed webhook handlers, and provider-normalized transaction states.</p><div className="mt-10 grid gap-4 md:grid-cols-3">{snippets.map((s) => <Card key={s}><CardContent className="p-5"><code className="text-sm">{s}</code></CardContent></Card>)}</div></main>; }
